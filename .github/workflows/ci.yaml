@@ -16,6 +16,8 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
       - name: create dirs
         shell: bash
         run: dart run non_ascii_sandbox
