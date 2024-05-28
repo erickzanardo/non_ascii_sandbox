@@ -1,0 +1,22 @@
+name: sandbox
+
+on:
+  push: main
+
+env:
+  SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}
+  FLUTTER_VERSION: 3.22.0
+
+jobs:
+  create_dirs:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: create dirs
+        shell: bash
+        run: dart run non_ascii_sandbox
