@@ -18,6 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
-      - name: create dirs
+
+      - name: create dirs with package
+        shell: bash
+        run: dart run non_ascii_sandbox --package
+
+      - name: create dirs without package
         shell: bash
         run: dart run non_ascii_sandbox
