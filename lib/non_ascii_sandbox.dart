@@ -4,7 +4,7 @@ import 'package:path/path.dart' as path;
 void run({required bool usePathPackage}) {
   final pathFn = usePathPackage ? path.join : joinPath;
 
-  final char = '木';
+  final char = 'tree 木';
 
   final dir = Directory(
     pathFn(
