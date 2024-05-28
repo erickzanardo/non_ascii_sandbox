@@ -15,17 +15,17 @@ void run({required bool usePathPackage}) {
 
   print('Created directory: ${dir.path}');
 
-  final file = File(pathFn(dir.path, 'file.txt'))
-    ..writeAsStringSync('Hello World');
-
-  print('Created file: ${file.path}');
-  print('File content: ${file.readAsStringSync()}');
+  print('Creating a flutter project in the directory...');
 
   final result = Process.runSync(
-    'echo',
-    ["'Command executed'"],
+    'flutter',
+    ['create', 'my_flutter_project'],
     workingDirectory: dir.path,
   );
+
+  if (result.exitCode != 0) {
+    print('Failed to create a flutter project in the directory.');
+  }
 
   print(result.stdout);
   print(result.stderr);
