@@ -21,11 +21,14 @@ void run({required bool usePathPackage}) {
   print('Created file: ${file.path}');
   print('File content: ${file.readAsStringSync()}');
 
-  Process.runSync(
+  final result = Process.runSync(
     'echo',
     ["'Command executed'"],
     workingDirectory: dir.path,
   );
+
+  print(result.stdout);
+  print(result.stderr);
 }
 
 // So we don't use package just for this.
