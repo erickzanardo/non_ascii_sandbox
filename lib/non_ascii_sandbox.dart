@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:path/path.dart' as path;
 
-void run({ required bool usePathPackage }) {
+void run({required bool usePathPackage}) {
   final pathFn = usePathPackage ? path.join : joinPath;
 
   final char = '木';
@@ -15,14 +15,26 @@ void run({ required bool usePathPackage }) {
 
   print('Created directory: ${dir.path}');
 
-  final file = File(pathFn(dir.path, 'file.txt'))..writeAsStringSync('Hello World');
+  final file = File(pathFn(dir.path, 'file.txt'))
+    ..writeAsStringSync('Hello World');
 
   print('Created file: ${file.path}');
   print('File content: ${file.readAsStringSync()}');
+
+  Process.runSync(
+    'echo',
+    ["'Command executed'"],
+    workingDirectory: dir.path,
+  );
 }
 
 // So we don't use package just for this.
-String joinPath([String? part1, String? part2, String? part3, String? part4, String? part5]) {
+String joinPath(
+    [String? part1,
+    String? part2,
+    String? part3,
+    String? part4,
+    String? part5]) {
   final parts = <String>[];
   if (part1 != null) parts.add(part1);
   if (part2 != null) parts.add(part2);
@@ -32,4 +44,3 @@ String joinPath([String? part1, String? part2, String? part3, String? part4, Str
 
   return parts.join(Platform.pathSeparator);
 }
-
