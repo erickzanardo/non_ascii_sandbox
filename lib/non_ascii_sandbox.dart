@@ -12,4 +12,9 @@ void run() {
   )..createSync();
 
   print('Created directory: ${dir.path}');
+
+  final file = File(path.join(dir.path, 'file.txt'))..writeAsStringSync('Hello World');
+
+  print('Created file: ${file.path}');
+  print('File content: ${file.readAsStringSync()}');
 }
