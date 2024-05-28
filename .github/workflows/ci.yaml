@@ -1,7 +1,6 @@
 name: sandbox
 
-on:
-  push: main
+on: push
 
 env:
   SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}
